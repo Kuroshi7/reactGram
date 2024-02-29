@@ -2,8 +2,21 @@
 const express = require ("express")
 const router = express.Router()
 
-//Funçoes UserController.js
+// Controller
+const{
+    register,} = require ("../controllers/UseController");
 
-const {register} = require ("../controllers/UseController");
-router.post ("/register", register);
+//middlewares
+const validate = require ("../middleware/HandleValidation");
+
+//proximo
+const {
+    userCreateValidation, } = require ("../middleware/HandleValidation");
+
+
+//routes
+
+router.post("/register",register);
+
+
 module.exports = router;
