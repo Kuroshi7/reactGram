@@ -1,6 +1,6 @@
 
-const express = require ("express")
-const router = express.Router()
+const express = require ("express");
+const router = express.Router();
 
 // Controller
 const{
@@ -10,13 +10,12 @@ const{
 const validate = require ("../middleware/HandleValidation");
 
 //proximo
-const {
-    userCreateValidation, } = require ("../middleware/HandleValidation");
+const {   userCreateValidation, } = require ("../middleware/userValidacao");
 
 
 //routes
 
-router.post("/register",register);
+router.post("/register", userCreateValidation(), validate, register);
 
 
 module.exports = router;
