@@ -6,7 +6,7 @@ const jwtSecret = process.env.JWT_SECRET
 // Gerar token do usuario
 const generateToken = (id) => {
     return jwt.sign ({id}, jwtSecret,{
-        expiresIn: "7d"
+        expiresIn: "7d",
     });
 };
 
@@ -18,7 +18,7 @@ const register = async (req,res) =>{
     const user = await User.findOne({email});
 
     if (user){
-        res.status(422). json ({ errors: ["Por favor, utilize outro e-mail."]});
+        res.status(422).json ({ errors: ["Por favor, utilize outro e-mail."]});
         return;
     }
 
@@ -49,9 +49,9 @@ const register = async (req,res) =>{
 
 //Sing user in
     const login = async (req,res) => {
-        const {emial, password } = req.body;
+        const {email, password } = req.body;
 
-        const user = await User.findOne({ email });
+        const user = await User.findOne({email});
 
         //checar se usuario existe
         if (!user) {
@@ -73,7 +73,7 @@ const register = async (req,res) =>{
 // Get logged in user
     const getCurrentUser = async (req, res) => {
         const user = req.user;
-        res.status (200).json(user);
+        res.status(200).json(user);
     };
 
 // Disponibilizar funçoes para rotas. Imporar arquivo de rotas de forma simples. Exporta como Objeto -{}
