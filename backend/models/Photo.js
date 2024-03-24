@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const{Schema} = mmongoose
+const{Schema} = mongoose
 
 
 const fotoSchema= new Schema ({
